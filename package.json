@@ -28,6 +28,7 @@
     "webpack": "^2.6.1"
   },
   "dependencies": {
+    "electron-window": "^0.8.1",
     "vue": "^2.3.4"
   }
 }
