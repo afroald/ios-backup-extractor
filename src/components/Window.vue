@@ -1,17 +1,16 @@
 <template>
   <div class="window">
-    <div class="test">Test</div>
-    <ui-button>test</ui-button>
+    <div class="test">Test 8</div>
   </div>
 </template>
 
 <script>
-  import UiButton from 'keen-ui/lib/UiButton';
+  // import UiButton from 'keen-ui/lib/UiButton';
 
   export default {
     name: 'window',
     components: {
-      UiButton,
+      // UiButton,
     },
   };
 </script>

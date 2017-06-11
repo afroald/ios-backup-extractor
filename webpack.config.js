@@ -1,10 +1,14 @@
-const path = require('path');
+import path from 'path';
+import webpack from 'webpack';
+
+const publicPath = 'http://localhost:8080/static';
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/app'),
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'static'),
+    publicPath,
   },
   resolve: {
     extensions: ['.js', '.json', '.vue'],
@@ -22,5 +26,19 @@ module.exports = {
         loader: 'vue-loader',
       },
     ],
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin({
+      multiStep: true,
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+    }),
+  ],
+  devServer: {
+    hot: true,
+    contentBase: path.resolve(__dirname, 'static'),
+    headers: { 'Access-Control-Allow-Origin': '*' },
+    publicPath,
   },
 };

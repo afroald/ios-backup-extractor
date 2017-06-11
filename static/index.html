@@ -9,6 +9,10 @@
   </body>
 
   <script>
-    require('./bundle');
+    if (process.env.NODE_ENV === 'development') {
+      document.write('<script src="http://localhost:8080/static/bundle.js" async><\/script>');
+    } else {
+      require('./bundle');
+    }
   </script>
 </html>

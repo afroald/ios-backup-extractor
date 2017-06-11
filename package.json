@@ -5,9 +5,8 @@
   "private": true,
   "main": "src/main.js",
   "scripts": {
-    "start": "electron -r babel-register .",
-    "build": "webpack",
-    "watch": "webpack --watch"
+    "start": "NODE_ENV=development electron -r babel-register .",
+    "dev": "NODE_ENV=development node -r babel-register ./node_modules/.bin/webpack-dev-server --config webpack.config.js"
   },
   "author": "Roald Hacquebord <roald@hacquebordbuckles.nl>",
   "license": "MIT",
@@ -32,6 +31,7 @@
     "vue": "^2.3.4",
     "vue-loader": "^12.2.1",
     "vue-template-compiler": "^2.3.4",
-    "webpack": "^2.6.1"
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
   }
 }
