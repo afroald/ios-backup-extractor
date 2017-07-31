@@ -4,12 +4,13 @@ import webpack from 'webpack';
 const publicPath = 'http://localhost:8080/static';
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/renderer'),
+  entry: path.resolve(__dirname, 'src/renderer/renderer'),
   output: {
     filename: 'renderer.js',
     path: path.resolve(__dirname, 'static'),
     publicPath,
   },
+  target: 'electron-renderer',
   resolve: {
     extensions: ['.js', '.json', '.vue'],
   },
@@ -34,6 +35,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
     }),
+    new webpack.IgnorePlugin(/^ios-backup$/),
   ],
   devServer: {
     hot: true,

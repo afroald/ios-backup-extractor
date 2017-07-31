@@ -7,7 +7,7 @@
   "scripts": {
     "electron": "NODE_ENV=development electron -r babel-register .",
     "webpack": "NODE_ENV=development node -r babel-register ./node_modules/.bin/webpack-dev-server --config webpack.config.js",
-    "start": "concurrently -k -n webpack,electron \"yarn run webpack\" \"yarn run electron\""
+    "start": "concurrently -k -n webpack,electron \"npm run webpack\" \"npm run electron\""
   },
   "author": "Roald Hacquebord <roald@hacquebordbuckles.nl>",
   "license": "MIT",
@@ -17,10 +17,11 @@
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
     "babel-register": "^6.24.1",
+    "better-sqlite3": "^3.1.2",
     "concurrently": "^3.5.0",
     "css-loader": "^0.28.4",
     "devtron": "^1.4.0",
-    "electron": "^1.6.11",
+    "electron": "^1.7.5",
     "electron-debug": "^1.3.0",
     "electron-devtools-installer": "^2.2.0",
     "electron-window": "^0.8.1",
@@ -31,6 +32,7 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
+    "ios-backup": "file:../ios-backup",
     "keen-ui": "^1.0.0",
     "node-sass": "^4.5.3",
     "sass-lint": "^1.10.2",

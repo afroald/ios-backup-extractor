@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.app">
     <div v-if="!backup" :class="$style['open-dialog']">
-      <open-dialog></open-dialog>
+      <open-dialog @path="openBackup"></open-dialog>
     </div>
   </div>
 </template>
@@ -10,6 +10,8 @@
   import 'keen-ui/src/bootstrap';
   import OpenDialog from './OpenDialog';
 
+  const Backup = require('ios-backup');
+
   export default {
     name: 'App',
     components: { OpenDialog },
@@ -17,6 +19,11 @@
       return {
         backup: null,
       };
+    },
+    methods: {
+      openBackup(path) {
+        this.backup = new Backup(path);
+      },
     },
   };
 </script>

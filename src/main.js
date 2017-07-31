@@ -3,6 +3,7 @@ import debug from 'electron-debug';
 import path from 'path';
 import window from 'electron-window';
 
+// import openDialog from './openDialog';
 import installVueDevTools from './util/installVueDevTools';
 
 let mainWindow;
@@ -38,3 +39,5 @@ app.on('activate', () => {
 if (process.env.NODE_ENV === 'development') {
   debug();
 }
+
+// ipcMain.on('request-open-dialog', openDialog);
