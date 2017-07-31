@@ -4,9 +4,9 @@ import webpack from 'webpack';
 const publicPath = 'http://localhost:8080/static';
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/app'),
+  entry: path.resolve(__dirname, 'src/renderer'),
   output: {
-    filename: 'bundle.js',
+    filename: 'renderer.js',
     path: path.resolve(__dirname, 'static'),
     publicPath,
   },
