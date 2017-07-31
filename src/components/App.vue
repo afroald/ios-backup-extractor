@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.app">
-    <div :class="$style['open-dialog']" v-if="!backup">
-      <open-dialog name="backup"></open-dialog>
+    <div v-if="!backup" :class="$style['open-dialog']">
+      <open-dialog></open-dialog>
     </div>
   </div>
 </template>
