@@ -1,28 +1,26 @@
 <template>
-  <div :class="$style.app">
-    <div v-if="!backup" :class="$style['open-dialog']">
+  <div v-if="state !== null" :class="$style.app">
+    <div v-if="state.status == 'new'" :class="$style['open-dialog']">
       <open-dialog @path="openBackup"></open-dialog>
     </div>
+
+    <p v-if="state === 'opening'">Loading...</p>
   </div>
 </template>
 
 <script>
-  import 'keen-ui/src/bootstrap';
-  import OpenDialog from './OpenDialog';
-
-  const Backup = require('ios-backup');
+  import { ipcRenderer } from 'electron';
+  import OpenDialog from './OpenDialog.vue';
 
   export default {
     name: 'App',
     components: { OpenDialog },
-    data: function data() {
-      return {
-        backup: null,
-      };
+    data() {
+      return { state: null };
     },
     methods: {
       openBackup(path) {
-        this.backup = new Backup(path);
+        ipcRenderer.send('open-backup', path);
       },
     },
   };
