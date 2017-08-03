@@ -1,9 +1,8 @@
+import React from 'react';
+import { render } from 'react-dom';
+import { Window } from 'react-desktop/macOs';
 
-import KeenUI from 'keen-ui';
-import Vue from 'vue';
-Vue.use(KeenUI);
-
-import App from './components/App.vue';
-
-
-new Vue(Object.assign({ el: '#stage' }, App));
+const app = render(
+  React.createElement(Window),
+  document.getElementById('stage'),
+);

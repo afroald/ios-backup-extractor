@@ -1,11 +1,8 @@
 import { app, ipcMain } from 'electron';
-import Backup from 'ios-backup';
+// import Backup from 'ios-backup';
 import debug from 'electron-debug';
 import path from 'path';
 import window from 'electron-window';
-
-// import openDialog from './openDialog';
-import installVueDevTools from './util/installVueDevTools';
 
 let backup;
 let mainWindow;
@@ -20,10 +17,6 @@ function createWindow() {
 }
 
 app.on('ready', () => {
-  if (process.env.NODE_ENV === 'development') {
-    installVueDevTools();
-  }
-
   createWindow();
 });
 

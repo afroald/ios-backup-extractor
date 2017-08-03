@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "",
   "private": true,
-  "main": "src/init-compile.js",
+  "main": "src/main.js",
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
     "start": "NODE_ENV=development electron ."
@@ -12,29 +12,23 @@
   "license": "MIT",
   "dependencies": {
     "babel-core": "^6.25.0",
-    "babel-eslint": "^7.2.3",
-    "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
-    "babel-register": "^6.24.1",
-    "devtron": "^1.4.0",
-    "electron-compile": "^6.4.1",
-    "electron-debug": "^1.3.0",
-    "electron-devtools-installer": "^2.2.0",
     "electron-window": "^0.8.1",
+    "ios-backup": "file:../ios-backup",
+    "react": "^15.6.1",
+    "react-desktop": "^0.3.1",
+    "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "electron-builder": "^19.19.1",
+    "electron-debug": "^1.3.0",
+    "electron-prebuilt-compile": "^1.6.11",
+    "eslint-config-airbnb": "^15.1.0",
     "eslint": "^4.3.0",
-    "eslint-config-airbnb-base": "^11.3.1",
     "eslint-plugin-html": "^3.1.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.1.0",
-    "ios-backup": "file:../ios-backup",
-    "keen-ui": "^1.0.0",
-    "sass-lint": "^1.10.2",
-    "vue": "^2.4.2"
-  },
-  "devDependencies": {
-    "electron": "^1.6.11",
-    "electron-builder": "^19.19.1",
-    "electron-compilers": "file:../electron-compilers"
+    "eslint-plugin-react": "^7.1.0"
   }
 }
