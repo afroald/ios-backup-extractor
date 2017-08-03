@@ -9,10 +9,6 @@
   </body>
 
   <script>
-    if (process.env.NODE_ENV === 'development') {
-      document.write('<script src="http://localhost:8080/static/renderer.js" async><\/script>');
-    } else {
-      require('./renderer');
-    }
+    require('../src/renderer/renderer.js');
   </script>
 </html>

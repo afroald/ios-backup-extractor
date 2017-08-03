@@ -1,6 +1,6 @@
 <template>
-  <div v-if="state !== null" :class="$style.app">
-    <div v-if="state == 'new'" :class="$style['open-dialog']">
+  <div v-if="state !== null" class="app">
+    <div v-if="state == 'new'" class="app__open-dialog">
       <open-dialog @path="openBackup"></open-dialog>
     </div>
 
@@ -33,18 +33,16 @@
 </script>
 
 <style lang="scss">
-  @import '../styles/base';
-</style>
+  // @import '../styles/base';
 
-<style lang="scss" module>
   .app {
     height: 100%;
-  }
 
-  .open-dialog {
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
+    &__open-dialog {
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+    }
   }
 </style>
