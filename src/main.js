@@ -1,28 +1,20 @@
 import { app, ipcMain } from 'electron';
+import Backup from 'ios-backup';
 import debug from 'electron-debug';
 import path from 'path';
 import window from 'electron-window';
 
-import defaultState from './defaultState';
-
 // import openDialog from './openDialog';
 import installVueDevTools from './util/installVueDevTools';
 
+let backup;
 let mainWindow;
-let state;
-
-function resetState() {
-  console.log('Resetting state');
-  state = Object.assign({}, defaultState);
-  console.log('State:');
-  console.log(state);
-}
 
 function createWindow() {
-  resetState();
   mainWindow = window.createWindow({ width: 800, height: 600 });
   mainWindow.showUrl(path.join(__dirname, '../static/index.html'));
   mainWindow.on('closed', () => {
+    backup = null;
     mainWindow = null;
   });
 }
@@ -47,14 +39,16 @@ app.on('activate', () => {
   }
 });
 
+ipcMain.on('backup:open', (event, backupPath) => {
+  event.sender.send('backup:state', 'opening');
+  // Backup.create(backupPath)
+  //   .then((openedBackup) => {
+  //     backup = openedBackup;
+  //   })
+  //   .catch((error) => {
+  //   });
+});
+
 if (process.env.NODE_ENV === 'development') {
   debug();
 }
-
-ipcMain.on('state:update', (event) => {
-  event.sender.send('state:update', state);
-});
-
-ipcMain.on('backup:open', (event) => {
-
-});

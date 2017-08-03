@@ -1,6 +1,6 @@
 <template>
   <div v-if="state !== null" :class="$style.app">
-    <div v-if="state.status == 'new'" :class="$style['open-dialog']">
+    <div v-if="state == 'new'" :class="$style['open-dialog']">
       <open-dialog @path="openBackup"></open-dialog>
     </div>
 
@@ -9,19 +9,25 @@
 </template>
 
 <script>
-  import { ipcRenderer } from 'electron';
+  import Backup from '../Backup';
   import OpenDialog from './OpenDialog.vue';
 
   export default {
     name: 'App',
     components: { OpenDialog },
     data() {
-      return { state: null };
+      return {
+        state: 'new',
+        backup: null,
+      };
     },
     methods: {
       openBackup(path) {
-        ipcRenderer.send('open-backup', path);
+        Backup.open(path);
       },
+    },
+    created() {
+      Backup.setDelegate(this);
     },
   };
 </script>
