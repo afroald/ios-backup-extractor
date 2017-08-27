@@ -15,9 +15,10 @@
     "babel-preset-env": "^1.6.0",
     "electron-window": "^0.8.1",
     "ios-backup": "file:../ios-backup",
+    "material-ui": "^0.19.0",
     "react": "^15.6.1",
-    "react-desktop": "^0.3.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-tap-event-plugin": "^2.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
