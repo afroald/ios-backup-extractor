@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Window } from 'react-desktop/macOs';
+import MainWindow from './components/MainWindow.jsx';
 
-const app = render(
-  React.createElement(Window),
+render(
+  React.createElement(MainWindow),
   document.getElementById('stage'),
 );
