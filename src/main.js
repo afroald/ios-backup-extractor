@@ -1,5 +1,4 @@
 import { app, ipcMain } from 'electron';
-// import Backup from 'ios-backup';
 import debug from 'electron-debug';
 import path from 'path';
 import window from 'electron-window';

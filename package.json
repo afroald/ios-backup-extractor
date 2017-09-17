@@ -5,7 +5,7 @@
   "private": true,
   "main": "src/main.js",
   "scripts": {
-    "postinstall": "electron-builder install-app-deps",
+    "postinstall": "electron-rebuild",
     "start": "NODE_ENV=development electron ."
   },
   "author": "Roald Hacquebord <roald@hacquebordbuckles.nl>",
@@ -14,23 +14,24 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "electron-window": "^0.8.1",
-    "ios-backup": "file:../ios-backup",
-    "material-ui": "^0.19.0",
+    "ios-backup": "git+https://github.com/afroald/ios-backup.git",
+    "photon": "git+https://github.com/connors/photon.git",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-tap-event-plugin": "^2.0.1"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.3",
+    "babel-eslint": "^8.0.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "electron-builder": "^19.26.0",
     "electron-debug": "^1.4.0",
     "electron-prebuilt-compile": "^1.7.6",
-    "eslint": "^4.5.0",
+    "electron-rebuild": "^1.6.0",
+    "eslint": "^4.7.0",
     "eslint-config-airbnb": "^15.1.0",
-    "eslint-plugin-html": "^3.2.0",
+    "eslint-plugin-html": "^3.2.2",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.3.0"
+    "eslint-plugin-react": "^7.3.0",
+    "jsxhint": "^0.15.1"
   }
 }

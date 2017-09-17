@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import OpenWindow from './OpenWindow.jsx';
+import Window from './photon/Window';
+import { Header } from './photon/Toolbar';
 import defaultState from '../defaultState';
 
 export default class App extends Component {
@@ -12,12 +12,12 @@ export default class App extends Component {
   }
 
   render() {
-    const Window = OpenWindow;
-
     return (
-      <MuiThemeProvider>
-        <Window />
-      </MuiThemeProvider>
+        <Window>
+          <Header title="Test">
+            Test
+          </Header>
+        </Window>
     );
   }
 }
