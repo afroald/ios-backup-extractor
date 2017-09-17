@@ -1,21 +1,22 @@
-import { app, ipcMain } from 'electron';
-import debug from 'electron-debug';
+import { app } from 'electron';
 import path from 'path';
 import window from 'electron-window';
 
-let backup;
 let mainWindow;
 
 function createWindow() {
   mainWindow = window.createWindow({ width: 800, height: 600 });
   mainWindow.showUrl(path.join(__dirname, '../static/index.html'));
   mainWindow.on('closed', () => {
-    backup = null;
     mainWindow = null;
   });
 }
 
 app.on('ready', () => {
+  if (process.env.NODE_ENV === 'development') {
+    const { enableLiveReload } = require('electron-compile');
+    enableLiveReload({ strategy: 'react-hmr' });
+  }
   createWindow();
 });
 
@@ -31,16 +32,7 @@ app.on('activate', () => {
   }
 });
 
-ipcMain.on('backup:open', (event, backupPath) => {
-  event.sender.send('backup:state', 'opening');
-  // Backup.create(backupPath)
-  //   .then((openedBackup) => {
-  //     backup = openedBackup;
-  //   })
-  //   .catch((error) => {
-  //   });
-});
-
 if (process.env.NODE_ENV === 'development') {
+  const debug = require('electron-debug');
   debug();
 }
