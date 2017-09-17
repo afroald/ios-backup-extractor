@@ -1,6 +1,6 @@
 const defaultState = {
-  backupLoaded: false,
-  backupLocked: true,
+  opened: false,
+  unlocked: null,
   files: [],
 };
 
