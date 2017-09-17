@@ -18,14 +18,14 @@ export default class App extends Component {
 
   render() {
     return (
-        <Window>
-          <Header title="iOS Backup Extractor">
-            <Button>
-              <Icon type="folder" />&nbsp;Open
-            </Button>
-          </Header>
-          <FileTable />
-        </Window>
+      <Window>
+        <Header title="iOS Backup Extractor">
+          <Button>
+            <Icon type="folder" />&nbsp;Open
+          </Button>
+        </Header>
+        <FileTable />
+      </Window>
     );
   }
 }
