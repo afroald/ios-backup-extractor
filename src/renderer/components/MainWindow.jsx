@@ -6,6 +6,7 @@ import { Header } from './photon/Toolbar';
 import Button from './photon/Button';
 import Icon from './photon/Icon';
 import FileTable from './FileTable';
+import UnlockForm from './UnlockForm';
 
 function noop() {}
 
@@ -26,15 +27,19 @@ export default class App extends Component {
   }
 
   render() {
+    const content = this.state.locked ?
+      <UnlockForm onUnlock={this.app.unlock}/> :
+      <FileTable files={this.state.files}/>;
+
     return (
       <Window>
         <Header title="iOS Backup Extractor">
           <Button onClick={this.app.openBackup}>
             <Icon type="folder" />&nbsp;Open
           </Button>
-          {this.state.path}
+          {this.state.status}
         </Header>
-        <FileTable />
+        {content}
       </Window>
     );
   }

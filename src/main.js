@@ -5,7 +5,11 @@ import window from 'electron-window';
 let mainWindow;
 
 function createWindow() {
-  mainWindow = window.createWindow({ width: 800, height: 600 });
+  mainWindow = window.createWindow({
+    width: 800,
+    height: 600,
+    titleBarStyle: 'hidden',
+  });
   mainWindow.showUrl(path.join(__dirname, '../static/index.html'));
   mainWindow.on('closed', () => {
     mainWindow = null;

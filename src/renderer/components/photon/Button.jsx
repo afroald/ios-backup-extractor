@@ -2,15 +2,22 @@ import React, { Component } from 'react';
 
 export default class Button extends Component {
   render() {
-    const classes = ['btn', `btn-${this.props.type || 'default'}`];
+    const {
+      style,
+      size,
+      children,
+      ...props
+    } = this.props;
+
+    const classes = ['btn', `btn-${style || 'default'}`];
 
     if (this.props.size) {
-      classes.push(`btn-${this.props.size}`);
+      classes.push(`btn-${size}`);
     }
 
     return (
-      <button className={classes.join(' ')} onClick={this.props.onClick}>
-        {this.props.children}
+      <button className={classes.join(' ')} {...props}>
+        {children}
       </button>
     );
   }

@@ -1,6 +1,6 @@
 const defaultState = {
-  opened: false,
-  unlocked: null,
+  status: 'new',
+  locked: null,
   files: [],
 };
 

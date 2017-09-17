@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "electron-debug": "^1.4.0",
     "electron-prebuilt-compile": "^1.7.6",
