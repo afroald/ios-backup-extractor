@@ -4,18 +4,27 @@ const rowHeight = 23;
 
 const style = {
   table: {
+    display: 'flex',
+    flexDirection: 'column',
     height: '100%',
-    overflow: 'scroll',
     fontSize: '12px',
+  },
+  header: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    backgroundColor: '#f5f5f4',
+  },
+  viewport: {
+    flexGrow: '1',
+    overflow: 'scroll',
   },
   content: {
     display: 'grid',
-    gridTemplateColumns: 'auto auto auto',
+    gridTemplateColumns: '1fr 1fr 1fr',
     alignContent: 'start',
   },
   column: {
     padding: '2px 15px',
-    backgroundColor: '#f5f5f4',
     borderRight: '1px solid #ddd',
     borderBottom: '1px solid #ddd',
   },
@@ -45,7 +54,7 @@ export default class Table extends Component {
 
     const tableHeight = this.table.clientHeight;
     const numRows = Math.ceil(tableHeight / rowHeight);
-    const scrollTop = this.table.scrollTop;
+    const scrollTop = this.viewport.scrollTop;
 
     const start = Math.max(0, (Math.ceil(scrollTop / rowHeight) - 10));
     const end = start + numRows + (10 * 2);
@@ -55,14 +64,6 @@ export default class Table extends Component {
       end,
       visibleRows: this.props.rows.slice(start, end),
     });
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextState.start === this.state.start && nextState.end === this.state.end) {
-      return false;
-    }
-
-    return true;
   }
 
   componentWillReceiveProps(props) {
@@ -82,16 +83,19 @@ export default class Table extends Component {
 
     return (
       <div style={style.table} ref={table => this.table = table} onScroll={this.update}>
-        <div style={contentStyle}>
-          {/*this.props.columns.map(column =>
+        <div style={style.header}>
+          {this.props.columns.map(column =>
             <div key={`column-${column.property}`} style={{...style.cell, ...style.column}}>{column.label}</div>
-          )*/}
-
-          {this.state.visibleRows.map((row) =>
-            this.props.columns.map(column =>
-              <div key={`cell-${row.id}-${column.property}`} style={style.cell}>{row[column.property]}</div>
-            )
           )}
+        </div>
+        <div style={style.viewport} ref={viewport => this.viewport = viewport}>
+          <div style={contentStyle}>
+            {this.state.visibleRows.map((row) =>
+              this.props.columns.map(column =>
+                <div key={`cell-${row.id}-${column.property}`} style={style.cell}>{row[column.property]}</div>
+              )
+            )}
+          </div>
         </div>
       </div>
     );
