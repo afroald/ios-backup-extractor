@@ -1,13 +1,15 @@
+import BSON from 'bson';
 import { remote } from 'electron';
 
 import defaultState from './defaultState';
 import showOpenDialog from './showOpenDialog';
 
 const { getCurrentWindow } = remote;
-const Backup = remote.require('ios-backup').default;
-console.log(Backup);
+const Backup = remote.require('./Backup').default;
+const bson = new BSON;
 
 function noop() {}
+
 
 export default function App() {
   let stateChangeCallback = noop;
@@ -51,15 +53,11 @@ export default function App() {
           locked: false,
         });
 
-        return backup.files();
+        return backup.getFiles();
       })
       .then((files) => {
         updateState({
-          files: files.map(file => ({
-            id: file.id,
-            domain: file.domain,
-            path: file.path,
-          })),
+          files: Object.values(bson.deserialize(files)),
         });
       });
   };
