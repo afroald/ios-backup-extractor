@@ -6,8 +6,8 @@ let mainWindow;
 
 function createWindow() {
   mainWindow = window.createWindow({
-    width: 800,
-    height: 600,
+    width: 1100,
+    height: 700,
     // titleBarStyle: 'hidden',
   });
   mainWindow.showUrl(path.join(__dirname, '../static/index.html'));
