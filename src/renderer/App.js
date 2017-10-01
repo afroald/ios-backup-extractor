@@ -1,10 +1,11 @@
-import Backup from 'ios-backup';
 import { remote } from 'electron';
 
 import defaultState from './defaultState';
 import showOpenDialog from './showOpenDialog';
 
 const { getCurrentWindow } = remote;
+const Backup = remote.require('ios-backup').default;
+console.log(Backup);
 
 function noop() {}
 
@@ -53,7 +54,13 @@ export default function App() {
         return backup.files();
       })
       .then((files) => {
-        updateState({ files });
+        updateState({
+          files: files.map(file => ({
+            id: file.id,
+            domain: file.domain,
+            path: file.path,
+          })),
+        });
       });
   };
 

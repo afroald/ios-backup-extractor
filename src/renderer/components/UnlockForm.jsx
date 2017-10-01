@@ -48,7 +48,7 @@ export default class UnlockForm extends Component {
                 className="form-control"
                 type="password"
                 placeholder="Password"
-                ref={(input) => { this.passwordInput = input }} />
+                ref={input => this.passwordInput = input} />
             </div>
             <div>
               <Button style="primary" size="large">Unlock</Button>
