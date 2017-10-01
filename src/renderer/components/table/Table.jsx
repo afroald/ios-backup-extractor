@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TableHeader from './TableHeader';
 
 const rowHeight = 23;
 
@@ -9,11 +10,6 @@ const style = {
     height: '100%',
     fontSize: '12px',
   },
-  header: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
-    backgroundColor: '#f5f5f4',
-  },
   viewport: {
     flexGrow: '1',
     overflow: 'scroll',
@@ -22,11 +18,6 @@ const style = {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',
     alignContent: 'start',
-  },
-  column: {
-    padding: '2px 15px',
-    borderRight: '1px solid #ddd',
-    borderBottom: '1px solid #ddd',
   },
   cell: {
     height: `${rowHeight}px`,
@@ -83,11 +74,8 @@ export default class Table extends Component {
 
     return (
       <div style={style.table} ref={table => this.table = table} onScroll={this.update}>
-        <div style={style.header}>
-          {this.props.columns.map(column =>
-            <div key={`column-${column.property}`} style={{...style.cell, ...style.column}}>{column.label}</div>
-          )}
-        </div>
+        <TableHeader columns={this.props.columns} />
+
         <div style={style.viewport} ref={viewport => this.viewport = viewport}>
           <div style={contentStyle}>
             {this.state.visibleRows.map((row) =>
